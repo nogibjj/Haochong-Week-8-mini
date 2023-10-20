@@ -1,12 +1,10 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import time
+from mylib.lib import get_median
 
 # Record the start time
 start_time = time.time()
-
-def get_median(df):
-    return df.median()
 
 if __name__ == "__main__":
     example_csv = "25ktopomapseriesindex.csv"
