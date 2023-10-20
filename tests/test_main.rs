@@ -1,6 +1,6 @@
 #[cfg(test)]
 mod tests {
-    use self::calculate_median;
+    use Haochong_Week_8_mini::calculate_median;
 
     #[test]
     fn test_calculate_median_odd() {
