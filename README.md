@@ -1,5 +1,8 @@
 # Haochong-week8-mini-repo 
-[![PYTHONCI](https://github.com/nogibjj/Haochong-Week-8-mini/actions/workflows/pytest.yml/badge.svg)](https://github.com/nogibjj/Haochong-Week-8-mini/actions/workflows/pytest.yml)[![Clippy](https://github.com/nogibjj/Haochong-Week-8-mini/actions/workflows/lint.yml/badge.svg)](https://github.com/nogibjj/Haochong-Week-8-mini/actions/workflows/lint.yml)[![Tests](https://github.com/nogibjj/Haochong-Week-8-mini/actions/workflows/tests.yml/badge.svg)](https://github.com/nogibjj/Haochong-Week-8-mini/actions/workflows/tests.yml)
+[![PYTHONCI](https://github.com/nogibjj/Haochong-Week-8-mini/actions/workflows/pytest.yml/badge.svg)](https://github.com/nogibjj/Haochong-Week-8-mini/actions/workflows/pytest.yml)
+[![Clippy](https://github.com/nogibjj/Haochong-Week-8-mini/actions/workflows/lint.yml/badge.svg)](https://github.com/nogibjj/Haochong-Week-8-mini/actions/workflows/lint.yml)
+[![Tests](https://github.com/nogibjj/Haochong-Week-8-mini/actions/workflows/tests.yml/badge.svg)](https://github.com/nogibjj/Haochong-Week-8-mini/actions/workflows/tests.yml)
+
 This is a repo template for course 706_Data_Engineering Week 8 Mini Project. First of all, I write my code in python to read a csv and get the median value of to numeric columns. Then, create a `Cargo.toml`and transform my code into rust and create `lib.rs` and `main.rs` . After that, I create `test_main.rs` to test the functions. Finally, I add content for both rust and python in `Makefile`, and use Action to run `Makefile` and got a 100% pass. 
 
 Important file:
