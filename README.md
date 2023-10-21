@@ -56,7 +56,7 @@ For python, I just use `panda` to read csv and use `median` to get medians of `s
 ![Alt text](<截屏2023-10-20 下午9.39.16.png>)
 
 ## Speed and Resource Usage:
-- Python:
+1. Python:
 
 ![Alt text](<截屏2023-10-20 下午9.22.40.png>)
 
@@ -64,7 +64,7 @@ For python, I just use `panda` to read csv and use `median` to get medians of `s
 * CPU Usage: 75.0%
 * Memory Usage: 80.3%
 
-- Rust: 
+2. Rust: 
 
 ![Alt text](<截屏2023-10-20 下午9.19.54.png>)
 
