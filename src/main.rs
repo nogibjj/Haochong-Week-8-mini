@@ -5,6 +5,7 @@ use std::fs::File;
 use csv::ReaderBuilder;
 use std::time::Instant;
 use Haochong_Week_8_mini::calculate_median;
+// use std::mem::size_of;
 
 fn main() -> Result<(), Box<dyn Error>> {
     // Record the start time
@@ -43,6 +44,8 @@ fn main() -> Result<(), Box<dyn Error>> {
     let elapsed_time = end_time.duration_since(start_time);
 
     println!("Elapsed time: {:?}", elapsed_time);
+    //println!("Memory usage: {} bytes", std::mem::size_of::<YourDataType>());
+
     Ok(())
 }
 
