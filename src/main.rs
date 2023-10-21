@@ -5,9 +5,30 @@ use std::fs::File;
 use csv::ReaderBuilder;
 use std::time::Instant;
 use Haochong_Week_8_mini::calculate_median;
-// use std::mem::size_of;
+use sys_info::mem_info;
+use std::process::Command;
 
 fn main() -> Result<(), Box<dyn Error>> {
+    let output = Command::new("ps")
+        .arg("-o")
+        .arg("%cpu")
+        .arg("-p")
+        .arg(format!("{}", std::process::id()))
+        .output()
+        .expect("Failed to execute ps command");
+
+    let usage = String::from_utf8_lossy(&output.stdout);
+    let lines: Vec<&str> = usage.split('\n').collect();
+    if lines.len() >= 2 {
+        let usage_str = lines[1].trim();
+        let usage_float: Result<f32, _> = usage_str.parse();
+        match usage_float {
+            Ok(usage) => println!("CPU Usage: {:.2}%", usage),
+            Err(_) => println!("Failed to parse CPU usage"),
+        }
+    } else {
+        println!("Failed to get CPU usage");
+    }
     // Record the start time
     let start_time = Instant::now();
     // Load the CSV file
@@ -40,11 +61,13 @@ fn main() -> Result<(), Box<dyn Error>> {
 
     let end_time = Instant::now();
 
-    // Calculate the elapsed time
+    // Calculate the elapsed time and resource usage
     let elapsed_time = end_time.duration_since(start_time);
+    let mem_info = mem_info().unwrap();
 
+    println!("Memory Usage: {}%", mem_info.total.saturating_sub(mem_info.avail) as f32 / mem_info.total as f32 * 100.0);
     println!("Elapsed time: {:?}", elapsed_time);
-    //println!("Memory usage: {} bytes", std::mem::size_of::<YourDataType>());
+    // println!("Memory usage: {} bytes", std::mem::size_of::<f64>());
 
     Ok(())
 }

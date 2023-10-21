@@ -14,3 +14,4 @@ uvicorn==0.18.3
 ruff==0.0.284
 
 pandas
+psutil
