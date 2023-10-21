@@ -20,41 +20,49 @@ Important file:
 
 
 ## Rust Implementation:
-The Rust version reads data from my CSV file in main function by using external crates `csv`, then calculates the medians of two numeric columns  of `shape_leng` and `shape_area` using my function `calculate_median`, which use a reference to a vector of f64 (64-bit floating-point numbers) as its argument. Also, as required, I use `Instant` to collect start time and end time and then calculate the usage of time.
+The Rust version reads data from my CSV file in main function by using external crates `csv`, then calculates the medians of two numeric columns of `shape_leng` and `shape_area` using my function `calculate_median`, which use a reference to a vector of f64 (64-bit floating-point numbers) as its argument. Also, as required, I use `Instant` to collect start time and end time and then calculate the usage of time. In addition, I use `sys_info::mem_info` to get memmory usage and `std::process::Command` to get cpu usage for my rust code.
 
 
 ### Preparation: 
 1. open codespaces 
 2. wait for codespaces to be built 
 3. build: `cargo build`
-4. run: `cargo run --  --message "Off to the bunker. Every person for themselves" --encrypt` or use your own string
+4. run: `cargo run`
 
 ### Check Format and Test Erros: 
 1. Format code `make format`
 2. Lint code `make lint`
 3. Test coce `make test`
 
+![Alt text](<截屏2023-10-20 下午5.51.24.png>)
+
 ## Python Implementation:
-The Python version features a similar CLI, utilizing the argparse module for argument parsing. It also offers options for mode, input text, and optional key and IV in base64 format. The CLI measures execution time, logs it, and displays the encrypted or decrypted message along with the elapsed time.
+For python, I just use `panda` to read csv and use `median` to get medians of `shape_leng` and `shape_area`. Besides, I import package `psutil` to get cpu usage by `psutil.cpu_percent()` and memory usage by `psutil.virtual_memory()`.
 
 
 ### Preparation: 
-1. git clone the repo
-2. install: `make python_install`
-3. run: `python main.py encrypt "Hello World"` or use your own string   
+1. open codespaces 
+2. wait for codespaces to be built 
+3. run `main.py`  
 
 ### Check Format and Test Erros: 
 1. Format code `make python_format`
 2. Lint code `make python_lint`
 3. Test coce `make python_test`
 
-## Speed and Resource Usage:
-[Link to Rust runtime Markdown File](https://github.com/nogibjj/Jeremy_Tan_IDS706_Week8/blob/main/rust_times.md)
-[Link to Python runtime Markdown File](https://github.com/nogibjj/Jeremy_Tan_IDS706_Week8/blob/main/python_times.md)
+![Alt text](<截屏2023-10-20 下午9.39.16.png>)
 
-You can view how long it takes to encrypt and decrypt the same messages above. Based on the speed, it's obvious Rust run on average 400 times faster than Python and we can infer why the resource usage is vastly smaller than Python. Rust outperforms Python in speed primarily due to its static typing, zero-cost abstractions, and absence of a Global Interpreter Lock (GIL). Rust's strict typing allows for more efficient compilation, while its ownership system enables high-performance abstractions without sacrificing safety. Additionally, Rust manages memory directly, avoiding the overhead of Python's garbage collector. The language also offers fine-grained control over memory, enabling low-level optimizations. These factors, combined with an optimized compiler and a performance-centric standard library, contribute to Rust's reputation for speed.
+## Speed and Resource Usage:
+- Python:
+
+![Alt text](<截屏2023-10-20 下午9.22.40.png>)
+
+- Rust: 
+
+![Alt text](<截屏2023-10-20 下午9.19.54.png>)
+
+The cpu usage and running time of rust are way more lower than python.
+
 
 ## References
-* [rust-cli-template](https://github.com/kbknapp/rust-cli-template)
-* https://github.com/DaGenix/rust-crypto/
 * https://github.com/nogibjj/rust-data-engineering
