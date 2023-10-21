@@ -23,7 +23,7 @@ Important file:
 
 
 ## Rust Implementation:
-The Rust version reads data from my CSV file in main function by using external crates `csv`, then calculates the medians of two numeric columns of `shape_leng` and `shape_area` using my function `calculate_median`, which use a reference to a vector of f64 (64-bit floating-point numbers) as its argument. Also, as required, I use `Instant` to collect start time and end time and then calculate the usage of time. In addition, I use `sys_info::mem_info` to get memmory usage and `std::process::Command` to get cpu usage for my rust code.
+The Rust version reads data from my CSV file in main function by using external crates `csv`, then calculates the medians of two numeric columns of `shape_leng` and `shape_area` using my function `calculate_median`, which use a reference to a vector of f64 (64-bit floating-point numbers) as its argument, then create a mutable copy of the argument and sort it in ascending order using the `sort_by method`. In the sorting process, in order to deal with potential NaN values, I also use `a.partial_cmp(b).unwrap()`. Then, the function gets the length of the sorted vector and return the middle value if length is odd, or return the average of the two middle values if length is even. Also, as required, I use `Instant` to collect start time and end time and then calculate the usage of time. In addition, I use `sys_info::mem_info` to get memmory usage and `std::process::Command` to get cpu usage for my rust code.
 
 
 ### Preparation: 
@@ -60,11 +60,19 @@ For python, I just use `panda` to read csv and use `median` to get medians of `s
 
 ![Alt text](<截屏2023-10-20 下午9.22.40.png>)
 
+* time: 0.0043s
+* CPU Usage: 75.0%
+* Memory Usage: 80.3%
+
 - Rust: 
 
 ![Alt text](<截屏2023-10-20 下午9.19.54.png>)
 
-The cpu usage and running time of rust are way more lower than python.
+* time: 0.002593167s
+* CPU Usage: 10.20%
+* Memory Usage: 81.26021%
+
+The results of the medians are both correct. We can see that the cpu usage and running time of Rust are way more lower than Python. Rust is a statically compiled language, which means its code is compiled into machine code before execution, while Python is an interpreted language, which means it is more flexible since the code is executed by the Python interpreter at runtime and requires more works to run. Besides, Rust is also a statically typed language, which means that type checking is finished at compile-time, hence many errors can be catched before runtime. However, Python is dynamically typed, which means type checking occurs at runtime. Therefore, Python also becomes more flexible in this way but it also can lead to more runtime checks that consume more time.
 
 
 ## References
